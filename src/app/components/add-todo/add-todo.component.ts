@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ObjectUnsubscribedError } from 'rxjs';
+import Todo from 'src/app/Models/Todo';
 
 @Component({
   selector: 'app-add-todo',
@@ -34,11 +35,10 @@ export class AddTodoComponent implements OnInit {
 }
   
   addTodo(){
-    const todo = {
-      id: this.generateUUID(),
-      text: this.text,
-      completed: false
-    };
+    const todo = new Todo(
+      this.text,
+      false
+    );
 
     this.addTodoEvent.emit(todo);
 
